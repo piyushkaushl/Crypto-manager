@@ -19,14 +19,14 @@ const cryptocurrencies = [
     { name: "Maker", price: 2500 },
     { name: "Compound", price: 750 },
     { name: "Yearn", price: 9000 },
-    // Add more cryptocurrencies as needed
+
 ];
-// Initialize user's holdings and wishlist
+
 let holdings = [];
 let wishlist = [];
-// Initialize balance
+
 let balance = 100000;
-// Function to open tabs
+
 function openTab(tabName) {
     const tabs = document.getElementsByClassName("tabcontent");
     for (let tab of tabs) {
@@ -34,13 +34,13 @@ function openTab(tabName) {
     }
     document.getElementById(tabName).style.display = "block";
 }
-// Function to display cryptocurrencies on homepage
+
 function displayCryptocurrencies() {
     const homepage = document.getElementById("homepage");
     homepage.innerHTML = "";
     cryptocurrencies.forEach(crypto => {
         const cryptoElement = document.createElement("div");
-        cryptoElement.classList.add("crypto-box"); // Add class for styling
+        cryptoElement.classList.add("crypto-box"); 
         cryptoElement.innerHTML = `
             <div>
                 <span>${crypto.name} - $${crypto.price}</span>
@@ -53,7 +53,7 @@ function displayCryptocurrencies() {
         homepage.appendChild(cryptoElement);
     });
 }
-// Function to add cryptocurrency to wishlist
+
 function addToWishlist(cryptoName, price) {
     if (!wishlist.some(crypto => crypto.name === cryptoName)) {
         wishlist.push({ name: cryptoName, price: price });
@@ -63,7 +63,7 @@ function addToWishlist(cryptoName, price) {
         alert(`${cryptoName} is already in your wishlist.`);
     }
 }
-// Function to remove cryptocurrency from wishlist
+
 function removeFromWishlist(cryptoName) {
     const index = wishlist.findIndex(crypto => crypto.name === cryptoName);
     if (index !== -1) {
@@ -74,8 +74,7 @@ function removeFromWishlist(cryptoName) {
         alert(`${cryptoName} is not in your wishlist.`);
     }
 }
-// Function to display wishlist
-// Function to display wishlist
+
 function displayWishlist() {
     const wishlistTab = document.getElementById("wishlist");
     wishlistTab.innerHTML = "<h4>Wishlist</h4>";
@@ -84,7 +83,7 @@ function displayWishlist() {
     } else {
         wishlist.forEach(crypto => {
             const cryptoElement = document.createElement("div");
-            cryptoElement.classList.add("crypto-box"); // Add class for styling
+            cryptoElement.classList.add("crypto-box"); 
             cryptoElement.innerHTML = `
                 <div>
                     <span>${crypto.name} - Price: $${crypto.price}</span>
@@ -98,7 +97,7 @@ function displayWishlist() {
         });
     }
 }
-// Function to purchase cryptocurrency
+
 function purchaseCrypto(cryptoName, price) {
     const crypto = cryptocurrencies.find(crypto => crypto.name === cryptoName);
     if (crypto) {
@@ -115,7 +114,7 @@ function purchaseCrypto(cryptoName, price) {
                   }
                 updateHoldings();
                 balance -= totalPrice;
-                updateBalanceDisplay(); // Update balance display
+                updateBalanceDisplay();
                 alert(`Purchased ${quantity} units of  ${cryptoName}. Remaining balance: $${balance.toFixed(2)}`);
             } else {
                 alert("Insufficient balance.");
@@ -125,7 +124,7 @@ function purchaseCrypto(cryptoName, price) {
         }
     }
 }
-// Function to buy cryptocurrency from wishlist
+
 function buyFromWishlist(cryptoName, price) {
     const index = wishlist.findIndex(crypto => crypto.name === cryptoName);
     if (index !== -1) {
@@ -137,7 +136,7 @@ function buyFromWishlist(cryptoName, price) {
                 holdings.push({ name: cryptoName, quantity: parseFloat(quantity),pricing:parseFloat(price) });
                 updateHoldings();
                 balance -= totalPrice;
-                updateBalanceDisplay(); // Update balance display
+                updateBalanceDisplay();
                 wishlist.splice(index, 1);
                 displayWishlist();
                 alert(`You purchased ${quantity} ${cryptoName}(s) from wishlist. Remaining balance: $${balance.toFixed(2)}`);
@@ -181,7 +180,7 @@ function updateHoldings() {
         });
     }
 }
-// Function to sell cryptocurrency
+
 function sellCrypto(cryptoName) {
     const cryptoIndex = holdings.findIndex(crypto => crypto.name === cryptoName);
     if (cryptoIndex !== -1) {
@@ -189,7 +188,7 @@ function sellCrypto(cryptoName) {
         const cryptoData = cryptocurrencies.find(crypto => crypto.name === cryptoName);
         const quantity = prompt(`Enter quantity to sell ${cryptoName}:`);
         if (quantity === null) {
-            return; // User cancelled the prompt
+            return; 
         }
         if (!isNaN(quantity) && quantity > 0 && quantity <= crypto.quantity) {
             const totalPrice = cryptoData.price * quantity;
@@ -199,7 +198,7 @@ function sellCrypto(cryptoName) {
                 holdings.splice(cryptoIndex, 1);
             }
             updateHoldings();
-            updateBalanceDisplay(); // Update balance display
+            updateBalanceDisplay(); 
             alert(`You sold ${quantity} ${cryptoName}(s). Balance: $${balance.toFixed(2)}`);
         } else {
             alert("Invalid quantity entered. Please enter a valid number.");
@@ -208,14 +207,14 @@ function sellCrypto(cryptoName) {
         alert(`${cryptoName} is not in your holdings.`);
     }
 }
-// Function to update balance display
+
 function updateBalanceDisplay() {
     const balanceElement = document.getElementById("balance");
     balanceElement.textContent = `$${balance.toFixed(2)}`;
 }
-// Initialize the homepage, wishlist, and holdings
+
 displayCryptocurrencies();
 displayWishlist();
 openTab("homepage");
-updateBalanceDisplay(); // Update balance display initially
-// Simulate
+updateBalanceDisplay(); 
+
