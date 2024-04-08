@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoManager</title>
+    <title>Crypto Trading App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main">
+    <header>
         <h1>Crypto Trading App</h1>
-        <p id="balance">Balance: $100000</p>
+        <div id="balance">Balance : $100000</div>
+    </header>
+    <div class="tabs">
+        <button class="g-button" onclick="openTab('homepage')">Home</button>
+        <button class="g-button" onclick="openTab('wishlist')">Wishlist</button>
+        <button class="g-button" onclick="openTab('holdings')">Holdings</button>
     </div>
-    <div class="main2">
-        <button onclick="navigate('home')">Home</button>
-        <button onclick="navigate('wishlist')">Wishlist</button>
-        <button onclick="navigate('holdings')">Holdings</button>
+    <div id="vella" class="aese-hi">
+      <div id="homepage" class="tabcontent">
+        <!-- Content for the homepage goes here -->
+      </div>
+      <div id="wishlist" class="tabcontent">
+      </div>
+      <div id="holdings" class="tabcontent">
+      <!-- Content for the holdings page goes here -->
+      </div>
     </div>
-    <div id="homePage" style="display: none;"></div>
-    <div id="wishlistPage" style="display: none;"></div>
-    <div id="holdingsPage" style="display: none;"></div>
-    <script src="script.js"></script>
+    <script src="first.js"></script>
 </body>
 </html>
